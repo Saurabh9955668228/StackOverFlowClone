@@ -1,10 +1,16 @@
-import express from 'express';
+import express from "express"
+import  {login,signup} from '../controllers/auth.js'
+import { getallusers,updateprofile } from "../controllers/users.js";
+import auth from "../middlewares/auth.js"
 
-import { signup,login } from '../controllers/auth.js'
+const router=express.Router();
 
-const router = express.Router();
+router.post("/signup",signup);
+router.post("/login",login);
 
-router.post('/signup',signup)
-router.post('/login',login)
+router.get("/getallusers",getallusers)
+
+router.patch("/update/:id",auth,updateprofile)
+
 
 export default router
