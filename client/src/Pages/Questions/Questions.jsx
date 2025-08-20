@@ -1,19 +1,33 @@
 import React from 'react'
-import '../../App.css'
-import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
-import RightSidebar from '../../components/RightSidebar/RightSidebar'
-import HomeMainbar from '../../components/HomeMainbar/HomeMainbar'
+import LeftSidebar from '../../components/LeftSidebar/LeftSidebar.jsx'
+import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx'
+import QuestionsList from '../../components/HomeMainbar/QuestionsList.jsx'
+
 const Questions = () => {
-  return (
-    <div className='home-container-1'>
-      <LeftSidebar />
-      <div className='home-container-2'>
-        <HomeMainbar />
-        <RightSidebar />
+    const questionList = [
+        {
+            id: 1,
+            votes: 3,
+            noOfAnswers: 2,
+            questionTitle: 'What is a function',
+            questionTags: ['java', 'node js', 'react js'],
+            userPosted: 'Saurabh',
+            askedOn: 'jan 1',
+            upVote: [],
+            downVote: [],
+        },
+        // Add more questions as needed
+    ];
+
+    return (
+        <div className='home-container-1'>
+            <LeftSidebar />
+            <div className='home-container-2'>
+                <QuestionsList questionList={questionList} />
+            </div>
+            <RightSidebar />
         </div>
-      
-    </div>
-  )
+    )
 }
 
 export default Questions

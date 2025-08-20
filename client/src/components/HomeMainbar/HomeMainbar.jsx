@@ -6,18 +6,18 @@ import QuestionsList from './QuestionsList'
 
 const HomeMainbar = () => {
   const location  = useLocation()
-  const user = null;
+  const user = 1;
     const navigate = useNavigate()
 
   var questionList = [{
-    id:1,
+    _id:1,
     upVotes:3,
     downVotes:2,
     noOfAnswers:2,
     questionTitle:"What is a function",
     questionBody: "It meant to be",
     questionTags:["java","node js","react js","mongodb", "python","javascript","express","html","css",],
-    userPosted: "mano",
+    userPosted: "Saurabh",
     userId:1,
     askedOn:" jan 1",
     answer:[{
@@ -27,13 +27,13 @@ const HomeMainbar = () => {
       userId:2,
     }]
   },{
-    id : 2,
+    _id : 2,
     votes : 0,
     noOfAnswers : 0,
     questionTitle : "What is a function",
     questionBody : "It meant to be",
     questionTags : ["java","python","node js","react js",],
-    userPosted : "mano",
+    userPosted : "Saurabh",
     askedOn : "jan 1",
     answer:[{
       answerBody:"Answer",
@@ -42,13 +42,13 @@ const HomeMainbar = () => {
       userId:2,
     }]
   },{
-    id : 3,
+    _id : 3,
     votes : 1,
     noOfAnswers :0,
     questionTitle : "What is a function",
     questionBody : "It meant to be",
     questionTags : ["javascript","python","node js"],
-    userPosted : "mano",
+    userPosted : "Saurabh",
     askedOn : "jan 1",
     answer:[{
       answerBody:"Answer",

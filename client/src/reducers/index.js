@@ -1,7 +1,10 @@
 import { combineReducers } from "redux"
 import authReducers from './auth'
-import questionReducer from './'
+import currentUserReducer from './currentUser'
+import usersReducer from './users'
 
 export default combineReducers({
-    authReducers
+    authReducers,
+    currentUserReducer,
+    usersreducer: usersReducer
 })
