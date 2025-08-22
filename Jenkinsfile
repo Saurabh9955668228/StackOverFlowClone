@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -38,28 +37,24 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
-                    bat 'npm install'
+                    bat 'npm run build'
                 }
             }
         }
 
         stage('Test') {
             steps {
-                 echo "No Test defined. skipping..."
-                }
+                echo "No Test defined. Skipping..."
             }
         }
 
         stage('Deploy') {
             steps { 
-               dir ('backend') {
-                   bat 'npm install -g pm2'
-
-
-                   bat 'pm2 delete all || echo "No Process to delete"'
-
-                   bat 'pm2 start server.js --name backend-app'
-               }
+                dir('backend') {
+                    bat 'npm install -g pm2'
+                    bat 'pm2 delete all || echo "No Process to delete"'
+                    bat 'pm2 start server.js --name backend-app'
+                }
                 dir('frontend') {
                     bat 'npm install -g serve'
                     bat 'pm2 start serve --name frontend-app -- -s build -l 3000'
@@ -77,5 +72,3 @@ pipeline {
         }
     }
 }
-
-
