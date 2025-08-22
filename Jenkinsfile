@@ -51,9 +51,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat 'echo Deploying app...'
-            }
+            steps { bat ' echo Deploying...'}
         }
     }
 
