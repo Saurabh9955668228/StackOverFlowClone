@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = '18'  
+        NODE_VERSION = '18'
     }
 
     stages {
@@ -15,6 +15,7 @@ pipeline {
         stage('Set up Node.js') {
             steps {
                 bat 'node -v'
+                bat 'npm -v'
             }
         }
 
@@ -52,11 +53,12 @@ pipeline {
             steps { 
                 dir('backend') {
                     bat 'npm install -g pm2'
-                    bat 'pm2 delete all || echo "No Process to delete"'
+                    bat 'pm2 delete backend-app || echo "Backend not running"'
                     bat 'pm2 start server.js --name backend-app'
                 }
                 dir('frontend') {
                     bat 'npm install -g serve'
+                    bat 'pm2 delete frontend-app || echo "Frontend not running"'
                     bat 'pm2 start serve --name frontend-app -- -s build -l 3000'
                 }
             }
