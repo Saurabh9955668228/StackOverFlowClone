@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = '18'  // Adjust based on your project
+        NODE_VERSION = '18'  
     }
 
     stages {
@@ -15,22 +15,14 @@ pipeline {
 
         stage('Set up Node.js') {
             steps {
-                sh '''
-                    # Install Node if not already installed (Linux agent assumed)
-                    if ! command -v node >/dev/null 2>&1; then
-                      curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
-                      sudo apt-get install -y nodejs
-                    fi
-                    node -v
-                    npm -v
-                '''
+                bat 'node -v'
             }
         }
 
         stage('Install Dependencies - Backend') {
             steps {
                 dir('backend') {
-                    sh 'npm install'
+                    bat 'cd frontend && npm install'
                 }
             }
         }
@@ -38,7 +30,7 @@ pipeline {
         stage('Install Dependencies - Frontend') {
             steps {
                 dir('frontend') {
-                    sh 'npm install'
+                    bat 'cd frontend && npm install'
                 }
             }
         }
@@ -46,7 +38,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
-                    sh 'npm run build'
+                    bat 'cd frontend && npm install
                 }
             }
         }
@@ -54,7 +46,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('backend') {
-                    sh 'npm test || echo "No tests configured"'
+                    bat 'npm test'
                 }
             }
         }
