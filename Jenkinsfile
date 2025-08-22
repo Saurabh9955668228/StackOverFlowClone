@@ -38,7 +38,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
-                    bat 'cd frontend && npm install
+                    bat 'cd frontend && npm install'
                 }
             }
         }
