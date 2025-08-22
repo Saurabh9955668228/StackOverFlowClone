@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Saurabh9955668228/StackOverFlowClone.git'
+                git branch: 'master', url: 'https://github.com/Saurabh9955668228/StackOverFlowClone.git'
             }
         }
 
