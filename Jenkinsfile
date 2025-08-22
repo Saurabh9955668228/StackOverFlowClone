@@ -51,7 +51,20 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps { bat ' echo Deploying...'}
+            steps { 
+               dir ('backend') {
+                   bat 'npm install -g pm2'
+
+
+                   bat 'pm2 delete all || echo "No Process to delete"
+
+                   bat 'pm2 start server.js --name backend-app'
+               }
+                dir('frontend') {
+                    bat 'npm install -g serve'
+                    bat 'pm2 start serve --name frontend-app -- -s build -l 3000'
+                }
+            }
         }
     }
 
