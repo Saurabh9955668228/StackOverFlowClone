@@ -22,7 +22,7 @@ pipeline {
         stage('Install Dependencies - Backend') {
             steps {
                 dir('backend') {
-                    bat 'cd frontend && npm install'
+                    bat 'cd backend && npm install'
                 }
             }
         }
