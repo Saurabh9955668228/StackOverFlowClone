@@ -38,7 +38,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('client') {   // ✅ fixed: was "frontend"
-                    bat 'set CI = false && npm run build'
+                    bat 'set CI=false && npm run build'
                 }
             }
         }
