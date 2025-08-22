@@ -56,7 +56,7 @@ pipeline {
                    bat 'npm install -g pm2'
 
 
-                   bat 'pm2 delete all || echo "No Process to delete"
+                   bat 'pm2 delete all || echo "No Process to delete"'
 
                    bat 'pm2 start server.js --name backend-app'
                }
