@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Install dependencies before deploying
+      - name: Install dependencies
+        run: npm install
+
+      # TODO: Replace this with your actual deployment step
+      # Examples: SSH into server, push to Render/Railway, restart PM2, build Docker image, etc.
+      - name: Deploy to server
+        run: echo "Add your deployment commands here"
